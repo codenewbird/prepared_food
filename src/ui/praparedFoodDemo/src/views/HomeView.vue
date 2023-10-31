@@ -1,66 +1,25 @@
 <template>
-  <div class="left"></div>
-  <div class="middle">
-    <div class="query">
-      <el-input style="width: 380px; float: left; margin: 0 10px" v-model="input" placeholder="Please input" />
-      <el-button style="" class="submit" type="primary">Primary</el-button>
-      <div id="main" style="height:400px; width:400px"></div>
-    </div>
+  <div class="header"><h1 align="center">XXX系统</h1> 
+    <span @click="open('home')">首页</span>
+    <span>|</span>
+    <span @click="open('monitor')">监测</span>   
   </div>
-  <div class="right"></div>
+  <HomeLeftView/>
+  <HomeMiddleView/>
+  <HomeRightView/>
 </template>
 
 <script setup>
-import { onMounted, ref, inject } from 'vue'
-const input = ref('')
-const echarts = inject("echarts");
+import { onMounted, ref, inject } from 'vue';
+import {useRouter} from "vue-router"
+import  HomeLeftView from '@/components/HomeLeftView.vue';
+import  HomeMiddleView from '@/components/HomeMiddleView.vue';
+import  HomeRightView from '@/components/HomeRightView.vue';
 
-let datachart = function () {
-  var chartDom = document.getElementById('main');
-  var myChart = echarts.init(chartDom);
-  var option;
-
-  option = {
-    title: {
-      text: 'Referer of a Website',
-      subtext: 'Fake Data',
-      left: 'center'
-    },
-    tooltip: {
-      trigger: 'item'
-    },
-    legend: {
-      orient: 'vertical',
-      left: 'left'
-    },
-    series: [
-      {
-        name: 'Access From',
-        type: 'pie',
-        radius: '50%',
-        data: [
-          { value: 1048, name: 'Search Engine' },
-          { value: 735, name: 'Direct' },
-          { value: 580, name: 'Email' },
-          { value: 484, name: 'Union Ads' },
-          { value: 300, name: 'Video Ads' }
-        ],
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)'
-          }
-        }
-      }
-    ]
-  };
-
-  option && myChart.setOption(option);
-
-}
-
-onMounted(datachart)
+let router = useRouter();
+const open = function(name){
+    router.push({name: name})
+};
 
 </script>
 
@@ -68,19 +27,13 @@ onMounted(datachart)
 .left{
   float: left;
   width: 33%;
-  height: 300px;
-  background-color: red;
 }
 .middle{
   float: left;
   width: 33%;
-  height: 300px;
-  background-color: blue;
 }
 .right{
   float: left;
   width: 33%;
-  height: 300px;
-  background-color: green;
 }
 </style>
