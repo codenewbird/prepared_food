@@ -34,8 +34,8 @@ const router = createRouter({
           component:MonitorRawView
         },
         {
-          path:'tran',
-          name:tran,
+          path:'/tran',
+          name:'tran',
           component:MonitorTranView
         }
       ]

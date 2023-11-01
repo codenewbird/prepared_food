@@ -1,5 +1,5 @@
 <template>
-    <p>123</p>
+    <p>1234</p>
 </template>
 
 <script>
