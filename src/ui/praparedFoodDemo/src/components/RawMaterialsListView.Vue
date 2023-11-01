@@ -6,6 +6,9 @@
           <el-option :label="pepper" :value="pepper"></el-option>
           <!-- 此处接入数据库各项原料 -->
         </el-select>
+        <el-select v-model="selectedRaw" placeholder="">
+          <el-option v-for="raw in rawList" :label="rawList.name" :value="rawList.id"></el-option>
+        </el-select>
     </div>
     <div class="list">
         <div class="raw_material">
@@ -27,4 +30,25 @@ const tableData = [
     rating: 'GOOD',
   },
 ];  
+const selectedRaw="";
+const rawList = [
+  {
+    name: 'potato',
+    vender: 'XX COMPANY',
+    rating: 'GOOD',
+    id: 1,
+  },
+  {
+    name: 'beef',
+    vender: 'XX COMPANY',
+    rating: 'GOOD',
+    id: 2,
+  },
+  {
+    name: 'pepper',
+    vender: 'XX COMPANY',
+    rating: 'GOOD',
+    id: 3,
+  },
+];
 </script>
