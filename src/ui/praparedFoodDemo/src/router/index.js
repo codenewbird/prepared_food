@@ -5,6 +5,10 @@ import WorkingProcedures from '../views/WorkingProceduresView.vue'
 import RawMaterialsView from '../views/RawMaterialsView.vue'
 import TransportInfoView from '../views/TransportInfoView.vue'
 import SaleInfoPageView from '../views/SaleInfoPageView.vue'
+import MonitorDishView from '../components/monitor/MonitorDishView.vue'
+import MonitorRawView from '../components/monitor/MonitorRawView.vue'
+import MonitorTranView from '../components/monitor/MonitorTranView.vue'
+import { transform } from '@vue/compiler-core'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,7 +21,24 @@ const router = createRouter({
     {
       path: '/monitor',
       name: 'monitor',
-      component: MonitorView
+      component: MonitorView,
+      children:[
+        {
+          path:'/dish',
+          name:'dish',
+          component:MonitorDishView
+        },
+        {
+          path:'/raw',
+          name:'raw',
+          component:MonitorRawView
+        },
+        {
+          path:'tran',
+          name:tran,
+          component:MonitorTranView
+        }
+      ]
     },
     {
       path: '/workprocedure',
