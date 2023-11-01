@@ -1,18 +1,17 @@
 <template>
     <div class="select">
-        <el-select v-model="selectedValue" placeholder="choose raw material">
-          <el-option :label="potato" :value="potato"></el-option>
-          <el-option :label="beef" :value="beef"></el-option>
-          <el-option :label="pepper" :value="pepper"></el-option>
-          <!-- 此处接入数据库各项原料 -->
-        </el-select>
-        <el-select v-model="selectedRaw" placeholder="">
-          <el-option v-for="raw in rawList" :label="rawList.name" :value="rawList.id"></el-option>
+        <!-- <el-select v-model="seletedValue" placeholder="">
+          <el-option :label="potato" :value="potato">potato</el-option>
+          <el-option :label="beef" :value="beef">beef</el-option>
+          <el-option :label="pepper" :value="pepper">pepper</el-option>
+        </el-select> -->
+        <el-select v-model="name" placeholder="" @change="$forceUpdate();selectedRaw=raw">
+          <el-option v-for="raw in rawList" :label="raw.name" :value="raw.id" :key="raw.id"></el-option>
         </el-select>
     </div>
     <div class="list">
         <div class="raw_material">
-          <el-table :data="tableData" style="width: 100%">
+          <el-table :data="selectedRaw" style="width: 100%">
             <!-- 呈现原料的列表 -->
             <el-table-column prop="name" label="name" width="180" />
             <el-table-column prop="vender" label="vender" width="180" />
