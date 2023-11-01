@@ -1,8 +1,8 @@
 <template>
     <div> 
-        <span @click="open('dish')">原料储存仓库</span>
+        <span @click="open('raw')">原料储存仓库</span>
         <span>|</span>
-        <span @click="open('raw')">菜品制作地拍摄</span>   
+        <span @click="open('dish')">菜品制作地拍摄</span>   
         <span>|</span>
         <span @click="open('tran')">运输冷链摄制</span>  
     </div>
