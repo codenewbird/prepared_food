@@ -9,13 +9,14 @@ import java.util.List;
 @Setter
 @Getter
 public class Nutrition {
+    private String production_batches;
     private List<NutritionComposition> compositionList;
     private String food_appraisal_agency;//鉴定机构
     private Date appraisal_time; //鉴定时间
 
     @Setter
     @Getter
-    class NutritionComposition{
+    public static class NutritionComposition{
         String name;
         float dosage;
 
@@ -25,7 +26,8 @@ public class Nutrition {
         }
     }
 
-    public Nutrition(List<NutritionComposition> compositionList, String food_appraisal_agency, Date appraisal_time) {
+    public Nutrition(String production_batches, List<NutritionComposition> compositionList, String food_appraisal_agency, Date appraisal_time) {
+        this.production_batches = production_batches;
         this.compositionList = compositionList;
         this.food_appraisal_agency = food_appraisal_agency;
         this.appraisal_time = appraisal_time;
