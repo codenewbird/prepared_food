@@ -1,12 +1,7 @@
 <template>
     <div class="select">
-        <!-- <el-select v-model="seletedValue" placeholder="">
-          <el-option :label="potato" :value="potato">potato</el-option>
-          <el-option :label="beef" :value="beef">beef</el-option>
-          <el-option :label="pepper" :value="pepper">pepper</el-option>
-        </el-select> -->
-        <el-select v-model="name" placeholder="" @change="$forceUpdate();selectedRaw=raw">
-          <el-option v-for="raw in rawList" :label="raw.name" :value="raw.id" :key="raw.id"></el-option>
+        <el-select ref="rawRef" v-model="name" placeholder="请选择原料" @change="$forceUpdate(),toSelect()" value-key="id">
+            <el-option v-for="raw in rawList" :label="raw.name" :value="raw" key="raw.id"></el-option>
         </el-select>
     </div>
     <div class="list">
@@ -29,7 +24,7 @@ const tableData = [
     rating: 'GOOD',
   },
 ];  
-const selectedRaw="";
+const selectedRaw=[];
 const rawList = [
   {
     name: 'potato',
@@ -50,4 +45,18 @@ const rawList = [
     id: 3,
   },
 ];
+const toSelect = () =>{
+  //  this.$forceUpdate()
+  // let obj = {}
+  // obj = this.model.find(
+  //   (item)=>{
+  //     return item.id === id
+  //   }
+  // )
+  // console.log("obj",obj)
+  // console.log(
+  //       this.$refs.rawRef.selected.value,
+  //       this.$refs.rawRef.selected.label
+  //     );
+ };
 </script>
