@@ -21,8 +21,7 @@ const open = function(name){
     <span @click="open('rawmaterial')">原料数据</span>   
     <span>|</span>
     <span @click="open('transportinfo')">存储运输</span>   
-    <span>|</span>
-    <span @click="open('saleinfo')">销售数据</span>    
+
   </div>
 <div class="query">
   <el-input style="width: 380px; float: left; " v-model="input" placeholder="Please input" />

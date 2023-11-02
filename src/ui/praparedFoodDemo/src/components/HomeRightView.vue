@@ -9,6 +9,17 @@
           </el-table>
         </div>
       </div>
+      <div style="margin-top: 400px; width: 100%; height: auto">
+        <span>制作流程</span>
+          <ul type="1">
+              <li>原料清洗称重</li>
+              <li>冷油入锅加热约2分钟</li>
+              <li>油温适中时加入肉片炒约5分钟至半熟</li>
+              <li>加入辣椒翻炒约30秒</li>
+              <li>加入调味料调味约30秒</li>
+              <li>出锅冷制封装</li>
+          </ul>
+      </div>
 </template>
 
 <script setup>

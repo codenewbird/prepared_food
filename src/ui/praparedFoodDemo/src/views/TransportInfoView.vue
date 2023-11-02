@@ -1,13 +1,13 @@
 <template>
     <p>transportinfo</p>
     <el-table :data="tableData" style="width: 100%">
-            <el-table-column prop="storage_mode" label="storage_mode" width="180" />
-            <el-table-column prop="time" label="time" width="180" />
-            <el-table-column prop="temperature" label="temperature" />
-            <el-table-column prop="humidity" label="humidity" />
-            <el-table-column prop="oxygen_content" label="oxygen_content" />
-            <el-table-column prop="state" label="state" />
-            <el-table-column prop="location" label="location" />
+            <el-table-column prop="storage_mode" label="储存方式" width="180" />
+            <el-table-column prop="time" label="记录时间" width="180" />
+            <el-table-column prop="temperature" label="温度(C)" />
+            <el-table-column prop="humidity" label="湿度" />
+            <el-table-column prop="oxygen_content" label="含氧量" />
+            <el-table-column prop="state" label="状态" />
+            <el-table-column prop="location" label="当前地点" />
     </el-table>
 </template>
 

@@ -4,13 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zjx.constant.BlockChainAPI;
-import com.zjx.entity.Ingredient;
 import com.zjx.entity.StorageRecordItem;
 import com.zjx.pojo.StorageRecord;
 import jakarta.annotation.Resource;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
@@ -19,7 +15,6 @@ import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
@@ -39,38 +34,32 @@ public class BlockChainDAO {
         System.out.println(responseEntity);
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = mapper.readTree(responseEntity.getBody());
-        Integer height = node.get("Data").asInt();
-        return height;
+        return node.get("Data").asInt();
     }
 
     public String getProductionLineInfoByHash() throws UnsupportedEncodingException, JsonProcessingException {
         String hash = productDao.getHash("123").getProductionLine_hash();
-        String res = getJson(hash);
-        return res;
+        return getJson(hash);
     }
 
     public String getBaseInfoByHash() throws UnsupportedEncodingException, JsonProcessingException {
         String hash = productDao.getHash("123").getBaseInfo_hash();
-        String res = getJson(hash);
-        return res;
+        return getJson(hash);
     }
 
     public String getNutritionByHash() throws UnsupportedEncodingException, JsonProcessingException {
         String hash = productDao.getHash("123").getNutrition_hash();
-        String res = getJson(hash);
-        return res;
+        return getJson(hash);
     }
 
     public String getRawMaterialByHash() throws UnsupportedEncodingException, JsonProcessingException {
         String hash = productDao.getHash("123").getRawMaterial_hash();
-        String res = getJson(hash);
-        return res;
+        return getJson(hash);
     }
 
     public String getIngredientByHash() throws JsonProcessingException, UnsupportedEncodingException {
         String hash = productDao.getHash("123").getIngredient_hash();
-        String res = getJson(hash);
-        return res;
+        return getJson(hash);
     }
 
     public String getStorageRecordList() throws UnsupportedEncodingException, JsonProcessingException {

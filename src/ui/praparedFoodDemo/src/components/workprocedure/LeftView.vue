@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 50%">
+    <div style="width: 50%; float: left">
         <div>
         <span>制作流程</span>
         <ul type="1">
@@ -24,11 +24,12 @@
             制作设备信息
             <div style="border: 1px solid black width: 100%; height: 200px; background-color: #eee">
                 <el-table :data="tableData2" style="width: 100%">
-                    <el-table-column prop="name" label="设备名称" />
+                    <el-table-column prop="name" label="设备名称" width="80px" />
                     <el-table-column prop="model" label="设备型号"  />
-                    <el-table-column prop="feature" label="功能" />
-                    <el-table-column prop="manufacture_date" label="制造厂商" width="180" />
+                    <el-table-column prop="feature" label="功能" width="80px" />
+                    <el-table-column prop="manufacture_date" label="生产日期" width="180px" />
                     <el-table-column prop="manufacturer" label="生产商" />
+                    <el-table-column prop="latest_overhaul_date" label="最后检修日期" />
                 </el-table>
             </div>
             制作人员信息
@@ -60,7 +61,9 @@ onMounted(async () => {
             const manufactureDate = new Date(item.manufacture_date);  
             const formattedDate = manufactureDate.toLocaleString();  
             tableData.value[i].manufacture_date = formattedDate;  
+            
             }
+          
         })
     } catch (error) {
         
@@ -80,6 +83,12 @@ onMounted(async () => {
             const formattedDate = manufactureDate.toLocaleString();  
             tableData2.value[i].manufacture_date = formattedDate;  
         }
+        for (let i = 0; i < tableData2.value.length; i++) {  
+            const item = tableData2.value[i];  
+            let manufactureDate = new Date(item.latest_overhaul_date);  
+            let formattedDate = manufactureDate.toLocaleString();  
+            tableData2.value[i].latest_overhaul_date = formattedDate;  
+          }
           tableData3.value = res.data.employeeList;
           
         })
