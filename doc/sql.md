@@ -12,17 +12,19 @@ CREATE TABLE storageRecord(
 
 CREATE TABLE productRecord(
     batch VARCHAR(128) PRIMARY KEY,
-    rawMaterial_hash VARCHAR(255),
-    ingredient_hash VARCHAR(255),
-    nutrition_hash VARCHAR(255),
-    baseInfo_hash VARCHAR(255)
+    rawMaterial_hash VARCHAR(128),
+    ingredient_hash VARCHAR(128),
+    nutrition_hash VARCHAR(128),
+    baseInfo_hash VARCHAR(128),
+    productionLine_hash VARCHAR(128)
 );
 
 INSERT INTO productRecord values("123",
 "L/2iXmOMcLYivkIWcNn17uAYXut2l38lvQfWyFh8E5M=",
 "GNlRC4BW3gCiiIqGHkaPxQpm7xduwsZcInBk/y3VHUg=",
 "pbozHCZ6+mddRZaMzDkVwOmp+pWtvlWg/hDzEVmmYug=",
-"tYQJFZNAdrFYzg4WH66ZET+bFuwoVMsQ7kIhedVjAxM=");
+"tYQJFZNAdrFYzg4WH66ZET+bFuwoVMsQ7kIhedVjAxM=",
+"qy8ma/YLvgQDvX3K1nChdvZ3hX//u5/5v0rpqI+vy9o=");
 
 INSERT INTO storageRecord values
 ("123","FVwQGeBVa69P/qXyHfenHqb4UxHhl+nRSZrpNGtBkps="),

@@ -74,4 +74,25 @@ public class TestBLKC {
         json = encoder.encodeToString(json.getBytes());
         System.out.println(json);
     }
+
+    @Test
+    public void test6() throws JsonProcessingException {
+        List<Employee> employees = new ArrayList<>();
+        List<Equipment> equipments = new ArrayList<>();
+        employees.add(new Employee("1","tzm","健康","试吃"));
+        employees.add(new Employee("2","zzy","健康","洗菜"));
+        employees.add(new Employee("3","yzx","健康","切菜"));
+        employees.add(new Employee("4","mzq","健康","煮菜"));
+        employees.add(new Employee("4","zjx","健康","监工"));
+        equipments.add(new Equipment("清洗机","XX1-X2_X3","洗菜","XX制造厂",new Date(),new Date()));
+        equipments.add(new Equipment("切割机","XX2-X1_X3","切菜","XX2制造厂",new Date(),new Date()));
+        equipments.add(new Equipment("脱皮机","XX3-X2_X1","脱皮","XX3制造厂",new Date(),new Date()));
+        equipments.add(new Equipment("包装机","XX2-X2_X2","打包","XX4制造厂",new Date(),new Date()));
+        Productionline productionline = new Productionline("1","XXX","195XXXXXXXX",equipments,employees);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(productionline);
+        System.out.println(json);
+        json = encoder.encodeToString(json.getBytes());
+        System.out.println(json);
+    }
 }

@@ -12,6 +12,7 @@
         </ul>
         </div>
         <div>
+            配料信息
             <el-table :data="tableData" style="width: 100%">
               <el-table-column prop="name" label="配料名称" width="180" />
                 <el-table-column prop="manufacture_date" label="生产日期" width="180" />
@@ -22,11 +23,22 @@
         <div style="width: 100%">
             制作设备信息
             <div style="border: 1px solid black width: 100%; height: 200px; background-color: #eee">
-                
+                <el-table :data="tableData2" style="width: 100%">
+                    <el-table-column prop="name" label="设备名称" />
+                    <el-table-column prop="model" label="设备型号"  />
+                    <el-table-column prop="feature" label="功能" />
+                    <el-table-column prop="manufacture_date" label="制造厂商" width="180" />
+                    <el-table-column prop="manufacturer" label="生产商" />
+                </el-table>
             </div>
             制作人员信息
             <div style="border: 1px solid black width: 100%; height: 200px; background-color: #eee">
-                
+                <el-table :data="tableData3" style="width: 100%">
+              <el-table-column prop="employee_id" label="员工编号" width="180" />
+                <el-table-column prop="name" label="员工姓名" width="180" />
+                <el-table-column prop="health_state" label="员工健康状况" />
+                <el-table-column prop="duty" label="职责" />
+            </el-table>
             </div>
 
         </div>
@@ -35,18 +47,45 @@
 
 <script setup>
 import { ref,onMounted } from 'vue'
-import { test4 } from '@/api/product.js'
+import { getIngredient,getProductionLineInfo } from '@/api/product.js'
 
 let tableData = ref([])
 onMounted(async () => {
     try {
-        await test4().then(res => {
+        await getIngredient().then(res => {
           console.log(res.data)
           tableData.value = res.data;
+          for (let i = 0; i < tableData.value.length; i++) {  
+            const item = tableData.value[i];  
+            const manufactureDate = new Date(item.manufacture_date);  
+            const formattedDate = manufactureDate.toLocaleString();  
+            tableData.value[i].manufacture_date = formattedDate;  
+            }
         })
     } catch (error) {
         
     }
     return {tableData}
+  })
+
+let tableData2 = ref([])
+let tableData3 = ref([])
+onMounted(async () => {
+    try {
+        await getProductionLineInfo().then(res => {
+          tableData2.value = res.data.equipmentList;
+          for (let i = 0; i < tableData2.value.length; i++) {  
+            const item = tableData2.value[i];  
+            const manufactureDate = new Date(item.manufacture_date);  
+            const formattedDate = manufactureDate.toLocaleString();  
+            tableData2.value[i].manufacture_date = formattedDate;  
+        }
+          tableData3.value = res.data.employeeList;
+          
+        })
+    } catch (error) {
+        
+    }
+    return {tableData2,tableData3}
   })
 </script>

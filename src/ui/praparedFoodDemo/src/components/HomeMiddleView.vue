@@ -1,8 +1,6 @@
 <template>
     <div class="middle">
         <div class="query">
-          <el-input style="width: 380px; float: left; margin: 0 10px" v-model="input" placeholder="Please input" />
-          <el-button style="" class="submit" type="primary">Primary</el-button>
           <div id="main" style="height:400px; width:400px; margin: 10px auto"></div>
           <div id="main2" style="height:400px; width:400px; margin: 10px auto"></div>
         </div>
@@ -11,7 +9,7 @@
 
 <script setup>
 import { onMounted, ref, inject } from 'vue'
-import { test } from '@/api/product.js'
+import { getNutrition } from '@/api/product.js'
 
 let datachart = function () {
   var chartDom = document.getElementById('main');
@@ -56,7 +54,7 @@ let data1 = ref([]);
 
 onMounted(async () => {
     try {
-        await test().then(res => {
+        await getNutrition().then(res => {
           data1.value = res.data.compositionList.map(obj => {
             return {
                 value: obj.dosage,

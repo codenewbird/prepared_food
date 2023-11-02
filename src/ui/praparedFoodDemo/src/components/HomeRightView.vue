@@ -13,13 +13,13 @@
 
 <script setup>
 import { onMounted, ref} from 'vue'
-import { test6 } from '@/api/product.js'
+import { getRawMaterial } from '@/api/product.js'
 
 let tableData = ref([])
 
 onMounted(async () => {
     try {
-        await test6().then(res => {
+        await getRawMaterial().then(res => {
           tableData.value = res.data.map(obj => {
             return {
                name: obj.name,

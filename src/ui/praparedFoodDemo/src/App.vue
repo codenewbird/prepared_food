@@ -24,5 +24,16 @@ const open = function(name){
     <span>|</span>
     <span @click="open('saleinfo')">销售数据</span>    
   </div>
+<div class="query">
+  <el-input style="width: 380px; float: left; " v-model="input" placeholder="Please input" />
+  <el-button style="" class="submit" type="primary">Primary</el-button>
+</div>
   <RouterView />
 </template>
+
+<style scoped>
+  .query{
+    display: flex;
+    justify-content: center; 
+  }
+</style>

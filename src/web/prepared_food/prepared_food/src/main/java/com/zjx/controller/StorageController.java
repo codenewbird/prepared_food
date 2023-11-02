@@ -12,7 +12,7 @@ import java.io.UnsupportedEncodingException;
 public class StorageController {
     @Resource
     private BlockChainDAO blockChainDAO;
-    @RequestMapping("test7")
+    @RequestMapping("getStorageRecord")
     public String getStorageRecordByHash() throws UnsupportedEncodingException, JsonProcessingException {
         String storageRecordList = blockChainDAO.getStorageRecordList();
         return storageRecordList;

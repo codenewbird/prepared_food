@@ -20,15 +20,21 @@
 
 <script setup>
 import { onMounted, ref} from 'vue'
-import { test6 } from '@/api/product.js'
+import { getRawMaterial } from '@/api/product.js'
 
 let tableData = ref([])
 
 onMounted(async () => {
     try {
-        await test6().then(res => {
+        await getRawMaterial().then(res => {
           console.log(res.data)
           tableData.value = res.data;
+          for (let i = 0; i < tableData.value.length; i++) {  
+            const item = tableData.value[i];  
+            const manufactureDate = new Date(item.buy_time);  
+            const formattedDate = manufactureDate.toLocaleString();  
+            tableData.value[i].buy_time = formattedDate;  
+            }
         })
     } catch (error) {
         

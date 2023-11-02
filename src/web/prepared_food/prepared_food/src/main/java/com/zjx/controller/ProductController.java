@@ -17,28 +17,35 @@ public class ProductController {
     @Resource
     private BlockChainDAO blockChainDAO;
 
-    @RequestMapping("test3")
+    @RequestMapping("getProductionLineInfo")
+    public String getProductionLineInfo() throws JsonProcessingException, UnsupportedEncodingException {
+        String productionLineInfo = blockChainDAO.getProductionLineInfoByHash();
+        System.out.println(productionLineInfo);
+        return productionLineInfo;
+    }
+
+    @RequestMapping("getBaseInfo")
     public String getBaseInfo() throws JsonProcessingException, UnsupportedEncodingException {
         String baseInfo = blockChainDAO.getBaseInfoByHash();
         System.out.println(baseInfo);
         return baseInfo;
     }
-    @RequestMapping("test4")
+    @RequestMapping("getIngredient")
     public String getIngredient() throws JsonProcessingException, UnsupportedEncodingException {
         String ingredient = blockChainDAO.getIngredientByHash();
         System.out.println(ingredient);
         return ingredient;
     }
-    @RequestMapping("test5")
+    @RequestMapping("getNutrition")
     public String getNutrition() throws JsonProcessingException, UnsupportedEncodingException {
         String nutrition = blockChainDAO.getNutritionByHash();
         System.out.println(nutrition);
         return nutrition;
     }
-    @RequestMapping("test6")
+    @RequestMapping("getRawMaterial")
     public String getRawMaterial() throws JsonProcessingException, UnsupportedEncodingException {
-        String rawmaterial = blockChainDAO.getRawMaterialByHash();
-        System.out.println(rawmaterial);
-        return rawmaterial;
+        String rawMaterial = blockChainDAO.getRawMaterialByHash();
+        System.out.println(rawMaterial);
+        return rawMaterial;
     }
 }

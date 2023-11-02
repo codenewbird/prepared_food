@@ -46,16 +46,18 @@
 
 <script setup>
 import { ref,onMounted } from 'vue'
-import { test3 } from '@/api/product.js'
+import { getBaseInfo } from '@/api/product.js'
 
 let baseInfo = ref()
 
 
 onMounted(async () => {
     try {
-        await test3().then(res => {
+        await getBaseInfo().then(res => {
           console.log(res.data)
           baseInfo.value = res.data;
+          baseInfo.value.manufacture_date = new Date(baseInfo.value.manufacture_date).toLocaleString();
+          baseInfo.value.shelf_life = new Date(baseInfo.value.shelf_life).toLocaleString();
         })
     } catch (error) {
         

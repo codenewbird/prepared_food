@@ -1,8 +1,8 @@
 import request from ".";
 
-export function test(query){
+export function getStorageRecord(query){
     return request({
-        url: "/test7",
+        url: "/getStorageRecord",
         method: "get",
         params: query
     })

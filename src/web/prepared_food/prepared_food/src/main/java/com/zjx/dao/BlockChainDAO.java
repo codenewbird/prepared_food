@@ -43,6 +43,12 @@ public class BlockChainDAO {
         return height;
     }
 
+    public String getProductionLineInfoByHash() throws UnsupportedEncodingException, JsonProcessingException {
+        String hash = productDao.getHash("123").getProductionLine_hash();
+        String res = getJson(hash);
+        return res;
+    }
+
     public String getBaseInfoByHash() throws UnsupportedEncodingException, JsonProcessingException {
         String hash = productDao.getHash("123").getBaseInfo_hash();
         String res = getJson(hash);

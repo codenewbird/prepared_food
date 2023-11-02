@@ -15,4 +15,5 @@ public class ProductRecord {
     private String ingredient_hash;
     private String nutrition_hash;
     private String baseInfo_hash;
+    private String productionLine_hash;
 }

@@ -14,7 +14,7 @@
 <script setup>
 
 import { ref,onMounted } from 'vue'
-import { test } from '@/api/storage.js'
+import { getStorageRecord } from '@/api/storage.js'
 let tableData = ref([])
 
 const fun1 = function (num) {
@@ -38,13 +38,13 @@ const fun1 = function (num) {
 
 onMounted(async () => {
     try {
-        await test().then(res => {
+        await getStorageRecord().then(res => {
             console.log(res.data)
           tableData.value = res.data.map(obj => {  
             console.log(obj)
             return {  
                 storage_mode: obj.storage_mode,  
-                time: obj.time,  
+                time: new Date(obj.time).toLocaleString(),  
                 temperature: obj.temperature,
                 humidity: obj.humidity,
                 oxygen_content: obj.oxygen_content,
