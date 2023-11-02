@@ -13,9 +13,10 @@
         </div>
         <div>
             <el-table :data="tableData" style="width: 100%">
-                <el-table-column prop="date" label="Date" width="180" />
-                <el-table-column prop="name" label="Name" width="180" />
-                <el-table-column prop="address" label="Address" />
+              <el-table-column prop="name" label="配料名称" width="180" />
+                <el-table-column prop="manufacture_date" label="生产日期" width="180" />
+                <el-table-column prop="dosage" label="用量" />
+                <el-table-column prop="manufacturer" label="生产商" />
             </el-table>
         </div>
         <div style="width: 100%">
@@ -33,26 +34,19 @@
 </template>
 
 <script setup>
-const tableData = [
-  {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-];
+import { ref,onMounted } from 'vue'
+import { test4 } from '@/api/product.js'
+
+let tableData = ref([])
+onMounted(async () => {
+    try {
+        await test4().then(res => {
+          console.log(res.data)
+          tableData.value = res.data;
+        })
+    } catch (error) {
+        
+    }
+    return {tableData}
+  })
 </script>

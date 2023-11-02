@@ -8,6 +8,6 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   #目的是为了省略resultType里的代码量
-  type-aliases-package: com.zjx.entity
+  type-aliases-package: com.zjx.pojo
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

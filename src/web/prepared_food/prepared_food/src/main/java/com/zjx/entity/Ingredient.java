@@ -1,12 +1,16 @@
 package com.zjx.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
 
 @Getter
 @Setter
+@ToString
+@NoArgsConstructor
 public class Ingredient {
     private String production_batches;
     private String name;//配料名称

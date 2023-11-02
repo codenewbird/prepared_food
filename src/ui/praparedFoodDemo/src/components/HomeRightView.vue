@@ -2,35 +2,37 @@
     <div class="right">
         <div class="raw_material">
           <el-table :data="tableData" style="width: 100%">
-            <el-table-column prop="date" label="Date" width="180" />
-            <el-table-column prop="name" label="Name" width="180" />
-            <el-table-column prop="address" label="Address" />
+            <el-table-column prop="name" label="原料名称" width="180" />
+            <el-table-column prop="origin" label="产地" width="180" />
+            <el-table-column prop="storage" label="储存方式" />
+            <el-table-column prop="vendor" label="生产商" />
           </el-table>
         </div>
       </div>
 </template>
 
 <script setup>
-const tableData = [
-  {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-];  
+import { onMounted, ref} from 'vue'
+import { test6 } from '@/api/product.js'
+
+let tableData = ref([])
+
+onMounted(async () => {
+    try {
+        await test6().then(res => {
+          tableData.value = res.data.map(obj => {
+            return {
+               name: obj.name,
+               origin: obj.origin,
+               storage: obj.storage,
+               vendor: obj.vendor
+            };
+          });
+        })
+    } catch (error) {
+        
+    }
+    return {tableData}
+  })
+
 </script>

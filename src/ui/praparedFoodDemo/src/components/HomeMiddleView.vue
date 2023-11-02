@@ -11,6 +11,66 @@
 
 <script setup>
 import { onMounted, ref, inject } from 'vue'
+import { test } from '@/api/product.js'
+
+let datachart = function () {
+  var chartDom = document.getElementById('main');
+  var myChart = echarts.init(chartDom);
+  var option;
+
+  option = {
+    title: {
+      text: '营养成分饼图',
+      subtext: 'Fake Data',
+      left: 'center'
+    },
+    tooltip: {
+      trigger: 'item'
+    },
+    legend: {
+      orient: 'vertical',
+      left: 'left'
+    },
+    series: [
+      {
+        name: 'Access From',
+        type: 'pie',
+        radius: '50%',
+        data: data1.value,
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }
+    ]
+  };
+
+  option && myChart.setOption(option);
+
+}
+
+let data1 = ref([]);
+
+onMounted(async () => {
+    try {
+        await test().then(res => {
+          data1.value = res.data.compositionList.map(obj => {
+            return {
+                value: obj.dosage,
+                name: obj.name
+            };
+          });
+          datachart()
+        })
+    } catch (error) {
+        
+    }
+    return {data1}
+  })
+
 const input = ref('')
 const echarts = inject("echarts");
 let datachart2 = function () {
@@ -38,51 +98,7 @@ let datachart2 = function () {
 
 };
 
-let datachart = function () {
-  var chartDom = document.getElementById('main');
-  var myChart = echarts.init(chartDom);
-  var option;
 
-  option = {
-    title: {
-      text: 'Referer of a Website',
-      subtext: 'Fake Data',
-      left: 'center'
-    },
-    tooltip: {
-      trigger: 'item'
-    },
-    legend: {
-      orient: 'vertical',
-      left: 'left'
-    },
-    series: [
-      {
-        name: 'Access From',
-        type: 'pie',
-        radius: '50%',
-        data: [
-          { value: 1048, name: 'Search Engine' },
-          { value: 735, name: 'Direct' },
-          { value: 580, name: 'Email' },
-          { value: 484, name: 'Union Ads' },
-          { value: 300, name: 'Video Ads' }
-        ],
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)'
-          }
-        }
-      }
-    ]
-  };
 
-  option && myChart.setOption(option);
-
-}
-
-onMounted(datachart)
 onMounted(datachart2)
 </script>

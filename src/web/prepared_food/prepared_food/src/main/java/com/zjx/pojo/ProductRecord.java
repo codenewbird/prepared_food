@@ -14,5 +14,5 @@ public class ProductRecord {
     private String rawMaterial_hash;
     private String ingredient_hash;
     private String nutrition_hash;
-
+    private String baseInfo_hash;
 }

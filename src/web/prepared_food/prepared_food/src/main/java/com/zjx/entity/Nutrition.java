@@ -1,6 +1,7 @@
 package com.zjx.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Setter
 @Getter
+@NoArgsConstructor
 public class Nutrition {
     private String production_batches;
     private List<NutritionComposition> compositionList;

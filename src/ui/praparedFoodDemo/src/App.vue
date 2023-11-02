@@ -11,7 +11,7 @@ const open = function(name){
 </script>
 
 <template>
-  <div class="header"><h1 align="center">XXX系统</h1> 
+  <div class="header"><h1 align="center">安心食材&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一链追溯</h1> 
     <span @click="open('home')">首页</span>
     <span>|</span>
     <span @click="open('monitor')">监测</span>   
