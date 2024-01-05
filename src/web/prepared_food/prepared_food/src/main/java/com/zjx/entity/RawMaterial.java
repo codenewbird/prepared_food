@@ -5,25 +5,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * @author 周锦兴
+ */
 @Setter
 @Getter
 @NoArgsConstructor
-public class RawMaterial {
-    private String production_batches;
-    private String name;
-    private String vendor;
-    private String origin;
-    private Date buy_time;
-    private String storage;
+@AllArgsConstructor
+public class RawMaterial implements Serializable {
+    private String identificationCode;
+    private String detail;
 
-    public RawMaterial(String production_batches, String name, String vendor, String origin, Date buy_time, String storage) {
-        this.production_batches = production_batches;
-        this.name = name;
-        this.vendor = vendor;
-        this.origin = origin;
-        this.buy_time = buy_time;
-        this.storage = storage;
+    class RMs{
+        String name;
+        float dosage;
     }
+
 }

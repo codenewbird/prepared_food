@@ -33,5 +33,43 @@ INSERT INTO storageRecord values
 ("123","RG3uCETEydtggpXjeWPMfXc7nQanKYyE+2jUyVh+Es4=");
 
 ```
+第二次迭代
+```
+CREATE DATABASE preparedFood2;
 
+use preparedFood2;
 
+CREATE TABLE baseInfo(
+    identificationCode VARCHAR(50) PRIMARY KEY,
+    name VARCHAR(50),
+    shelfLife DATE,
+    manufacturer VARCHAR(50),
+    description VARCHAR(128)
+);
+
+CREATE TABLE ingredient(
+    identificationCode VARCHAR(50),
+    detail VARCHAR(255),
+    FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
+);
+
+CREATE TABLE rawMaterial(
+    identificationCode VARCHAR(50),
+    detail VARCHAR(255),
+    FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
+);
+
+CREATE TABLE nutrition(
+    identificationCode VARCHAR(50),
+    detail VARCHAR(255),
+    FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
+);
+
+CREATE TABLE procedure2(
+    identificationCode VARCHAR(50),
+    rank INT,
+    description VARCHAR(255),
+    monitorPointId VARCHAR(50),
+    FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
+);
+```

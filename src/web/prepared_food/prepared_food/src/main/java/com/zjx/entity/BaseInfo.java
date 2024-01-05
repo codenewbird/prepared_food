@@ -5,17 +5,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * @author 周锦兴
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
-public class BaseInfo {
+public class BaseInfo implements Serializable {
+    private String identificationCode;
     private String name;
-    private String batch;
-    private Date manufacture_date;
-    private Date shelf_life;
+    private Date shelfLife;
     private String manufacturer;
     private String description;
+    private String sqCode;
 }

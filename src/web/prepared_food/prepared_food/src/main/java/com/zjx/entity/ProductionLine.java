@@ -7,18 +7,19 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * @author 周锦兴
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
-public class Productionline {
+public class ProductionLine {
 
-    private String line_id;
-
+    private String lineId;
+    private int state;
     private String leader;
-    private String leader_tel;
-    private List<Equipment> equipmentList;
+    private String leaderTel;
 
-    private List<Employee> employeeList;
 
 }

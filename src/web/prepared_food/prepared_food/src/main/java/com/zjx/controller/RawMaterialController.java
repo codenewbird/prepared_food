@@ -11,7 +11,7 @@ import java.util.Date;
 public class RawMaterialController {
     @RequestMapping("rawMaterial")
     public ResponseEntity<RawMaterial> getRawMaterialInfo(){
-        RawMaterial rawMaterial = new RawMaterial("123","土豆","XXX供应商","湖南长沙",new Date(),"仓储");
-        return ResponseEntity.ok().body(rawMaterial);
+
+        return null;
     }
 }
