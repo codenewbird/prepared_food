@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "echarts": "^5.4.3",
-    "element-plus": "^2.4.1"
-  }
-}

@@ -1,13 +1,12 @@
 package com.zjx.service.impl;
 
 import com.zjx.dao.*;
-import com.zjx.entity.FoodInfo;
-import com.zjx.entity.Ingredient;
-import com.zjx.entity.Nutrition;
-import com.zjx.entity.Procedure;
+import com.zjx.entity.*;
 import com.zjx.service.FoodInfoService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author 周锦兴
@@ -24,13 +23,23 @@ public class FoodInfoServiceImpl implements FoodInfoService {
     NutritionDao nutritionDao;
     @Resource
     ProcedureDao procedureDao;
+    @Resource
+    RawMaterialRuleDao rawMaterialRuleDao;
     @Override
     public int addFood(FoodInfo foodInfo) {
         baseInfoDao.addItem(foodInfo.getBaseInfo());
         rawMaterialDao.addItem(foodInfo.getRawMaterial());
         ingredientDao.addItem(foodInfo.getIngredient());
         nutritionDao.addItem(foodInfo.getNutrition());
-        procedureDao.addItem(foodInfo.getProcedure());
-        return 0;
+        for(Procedure item : foodInfo.getProcedures()){
+            procedureDao.addItem(item);
+        }
+        rawMaterialRuleDao.addItem(foodInfo.getRawMaterialRule());
+        return 1;
+    }
+
+    @Override
+    public List<BaseInfo> getAllFoods() {
+        return baseInfoDao.getAllItems();
     }
 }

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author 周锦兴
@@ -19,5 +20,6 @@ public class FoodInfo implements Serializable {
     private RawMaterial rawMaterial;
     private Ingredient ingredient;
     private Nutrition nutrition;
-    private Procedure procedure;
+    private List<Procedure> procedures;
+    private RawMaterialRule rawMaterialRule;
 }

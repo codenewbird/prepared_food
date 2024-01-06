@@ -18,7 +18,7 @@ import java.util.Date;
 public class BaseInfo implements Serializable {
     private String identificationCode;
     private String name;
-    private Date shelfLife;
+    private int shelfLife;//?天
     private String manufacturer;
     private String description;
     private String sqCode;

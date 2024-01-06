@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjx.dao.BaseInfoDao">
+    <insert id="addItem" parameterType="com.zjx.entity.BaseInfo">
+        INSERT INTO baseInfo VALUES(
+        #{identificationCode},
+        #{name},
+        #{shelfLife},
+        #{manufacturer},
+        #{description},
+        #{sqCode})
+    </insert>
+    <select id="queryItem" parameterType="String">
+        SELECT * FROM baseInfo WHERE identificationCode=#{code}
+    </select>
+    <select id="getAllItems">
+        SELECT * FROM baseInfo
+    </select>
+</mapper>

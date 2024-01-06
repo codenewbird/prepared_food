@@ -1,12 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import FoodManager from '@/components/FoodManager.vue'
+import FoodAdd from '@/components/FoodAdd.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: '/foodManager',
+      name: 'foodManager',
       component: FoodManager
+    },
+    {
+      path: '/foodAdd',
+      name: 'foodAdd',
+      component: FoodAdd
     },
     // {
     //   path: '/about',

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjx.dao.NutritionDao">
+    <insert id="addItem" parameterType="com.zjx.entity.Nutrition">
+        INSERT INTO nutrition VALUES(
+        #{identificationCode},
+        #{detail})
+    </insert>
+    <select id="queryItem" parameterType="String">
+        SELECT * FROM nutrition WHERE identificationCode=#{code}
+    </select>
+    <select id="getAllItems">
+        SELECT * FROM nutrition
+    </select>
+</mapper>
