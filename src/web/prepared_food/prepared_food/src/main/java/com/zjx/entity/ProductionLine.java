@@ -15,11 +15,8 @@ import java.util.List;
 @Setter
 @Getter
 public class ProductionLine {
-
     private String lineId;
     private int state;
-    private String leader;
-    private String leaderTel;
-
-
+    private String name;
+    private List<Equipment> equipments;
 }
