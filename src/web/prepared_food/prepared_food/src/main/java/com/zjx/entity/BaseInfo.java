@@ -22,4 +22,5 @@ public class BaseInfo implements Serializable {
     private String manufacturer;
     private String description;
     private String sqCode;
+
 }

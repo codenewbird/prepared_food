@@ -12,15 +12,8 @@
                         @click="handleEdit(scope.$index, scope.row)"
                         v-permiss="15"
                         >
-                        编辑
-                        </el-button>
-                    <el-popconfirm confirm-button-text="是" cancel-button-text="否" title="您确定删除吗？"
-                        icon-color="#626AEF" @confirm="handleDelete(scope.$index,scope.row)">
-                        <template #reference>
-                            <el-button>删除</el-button>
-                        </template>
-                    </el-popconfirm>    
-                                    
+                        选择
+                        </el-button>   
                 </div>
             </template>
         </el-table-column>

@@ -42,7 +42,7 @@
     })
 
     let equipment = {
-        "lineId":"",
+        "lineId":"1",
         "equipmentId":"",
         "name":"",
         "model":"",

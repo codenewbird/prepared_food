@@ -12,6 +12,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/foodAdd">foodAdd</RouterLink>
         <RouterLink to="/lineAdd">lineAdd</RouterLink>
         <RouterLink to="/lineManager">lineManager</RouterLink>
+        <RouterLink to="/lotAdd">lotAdd</RouterLink>
       </nav>
     </div>
   </header>

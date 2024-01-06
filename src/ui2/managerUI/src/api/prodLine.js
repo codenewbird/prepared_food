@@ -8,3 +8,10 @@ export function addLine(query){
         data: query
     })
 }
+
+export function getAllLine(){
+    return request({
+        url: "/line/getAllLine", 
+        method: "get",
+    })
+}

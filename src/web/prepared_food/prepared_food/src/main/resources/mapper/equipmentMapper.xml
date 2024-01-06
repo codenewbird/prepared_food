@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjx.dao.EquipmentDao">
+    <insert id="addItem" parameterType="com.zjx.entity.Equipment">
+        INSERT INTO equipment VALUES(
+        #{lineId},
+        #{equipmentId},
+        #{name},
+        #{model},
+        #{feature},
+        #{manufacturer},
+        #{manufactureDate},
+        #{latestOverhaulDate})
+    </insert>
+    <select id="queryItem" parameterType="String">
+        SELECT * FROM equipment WHERE lineId=#{id}
+    </select>
+    <select id="getAllItems">
+        SELECT * FROM equipment
+    </select>
+</mapper>

@@ -89,14 +89,30 @@ CREATE TABLE rawMaterialRule(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE productionLine(
-    lineId VARCHAR(50),
+    lineId VARCHAR(50) PRIMARY KEY,
     state INT,
     name VARCHAR(128)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE equiment(
+CREATE TABLE equipment(
+    lineId VARCHAR(50),
+    equipmentId VARCHAR(50),
+    name VARCHAR(20),
+    model VARCHAR(20),
+    feature VARCHAR(128),
+    manufacturer VARCHAR(64),
+    manufacturerDate DATE,
+    latestOverhaulDate DATE,
+    FOREIGN KEY(lineId) REFERENCES productionLine(lineId)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE productionLot(
+    identificationCode VARCHAR(50),
+    lot VARCHAR(50) PRIMARY KEY,
     lineId VARCHAR(50),
     state INT,
-    FOREIGN KEY(lineId) REFERENCES productionLine(lineId)
+    num INT,
+    FOREIGN KEY(lineId) REFERENCES productionLine(lineId),
+    FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
