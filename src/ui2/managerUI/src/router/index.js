@@ -55,7 +55,7 @@ const router = createRouter({
       path: '/',
       name: 'login',
       component: Login
-    }
+    },
     // {
     //   path: '/about',
     //   name: 'about',

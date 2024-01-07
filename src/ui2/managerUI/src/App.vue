@@ -8,10 +8,10 @@ import { RouterLink, RouterView } from 'vue-router'
 
     <div class="wrapper">
       <nav>
-        <RouterLink to="/foodManager">Home</RouterLink>&nbsp;&nbsp;
-        <RouterLink to="/foodAdd">foodAdd</RouterLink>&nbsp;&nbsp;
-        <RouterLink to="/lineAdd">lineAdd</RouterLink>&nbsp;&nbsp;
-        <RouterLink to="/lineManager">lineManager</RouterLink>&nbsp;&nbsp;
+        <RouterLink to="/foodManager">Home</RouterLink>
+        <RouterLink to="/foodAdd">foodAdd</RouterLink>
+        <RouterLink to="/lineAdd">lineAdd</RouterLink>
+        <RouterLink to="/lineManager">lineManager</RouterLink>
         <RouterLink to="/lotAdd">lotAdd</RouterLink>
         <RouterLink to="/commentRuleSet">用户反馈监测规则设定</RouterLink>
       </nav>
