@@ -28,22 +28,22 @@ import { getRawMaterial } from '@/api/product.js'
 
 let tableData = ref([])
 
-onMounted(async () => {
-    try {
-        await getRawMaterial().then(res => {
-          tableData.value = res.data.map(obj => {
-            return {
-               name: obj.name,
-               origin: obj.origin,
-               storage: obj.storage,
-               vendor: obj.vendor
-            };
-          });
-        })
-    } catch (error) {
+// onMounted(async () => {
+//     try {
+//         await getRawMaterial().then(res => {
+//           tableData.value = res.data.map(obj => {
+//             return {
+//                name: obj.name,
+//                origin: obj.origin,
+//                storage: obj.storage,
+//                vendor: obj.vendor
+//             };
+//           });
+//         })
+//     } catch (error) {
         
-    }
-    return {tableData}
-  })
+//     }
+//     return {tableData}
+//   })
 
 </script>

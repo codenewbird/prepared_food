@@ -13,6 +13,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/lineAdd">lineAdd</RouterLink>
         <RouterLink to="/lineManager">lineManager</RouterLink>
         <RouterLink to="/lotAdd">lotAdd</RouterLink>
+        <RouterLink to="/commentRuleSet">用户反馈监测规则设定</RouterLink>
       </nav>
     </div>
   </header>

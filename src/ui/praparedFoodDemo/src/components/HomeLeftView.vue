@@ -20,11 +20,8 @@
         </div>
         <h3>产品评论</h3>
         <div class="productInfo" style="border: 1px solid grey; margin: 50px auto; clear: both; background-color: #eeeeee20">
-          <div style="padding: 20px">
-            <p>小明</p>
-            <p>非常好吃，烹制方便</p>
-              <p>小红</p>
-            <p>一点也不好吃，肉干巴巴的，也没有香味，盐味很淡，不会再购入了</p>
+          <div style="padding: 20px" v-for="(comment,index) in comments" key="index">
+            <p></p>
           </div>
           <el-input
               v-model="textarea"
@@ -44,20 +41,27 @@ import { getBaseInfo } from '@/api/product.js'
 
 let baseInfo = ref()
 
+let comments = ref([])
 
-onMounted(async () => {
-    try {
-        await getBaseInfo().then(res => {
-          console.log(res.data)
-          baseInfo.value = res.data;
-          baseInfo.value.manufacture_date = new Date(baseInfo.value.manufacture_date).toLocaleString();
-          baseInfo.value.shelf_life = new Date(baseInfo.value.shelf_life).toLocaleString();
-        })
-    } catch (error) {
+const comment = {
+  userId: "",
+  nickName: "",
+  content: ""
+}
+
+// onMounted(async () => {
+//     try {
+//         await getBaseInfo().then(res => {
+//           console.log(res.data)
+//           baseInfo.value = res.data;
+//           baseInfo.value.manufacture_date = new Date(baseInfo.value.manufacture_date).toLocaleString();
+//           baseInfo.value.shelf_life = new Date(baseInfo.value.shelf_life).toLocaleString();
+//         })
+//     } catch (error) {
         
-    }
-    return {baseInfo}
-  })
+//     }
+//     return {baseInfo}
+//   })
 
 </script>
 

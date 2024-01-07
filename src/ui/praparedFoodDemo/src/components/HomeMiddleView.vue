@@ -52,22 +52,22 @@ let datachart = function () {
 
 let data1 = ref([]);
 
-onMounted(async () => {
-    try {
-        await getNutrition().then(res => {
-          data1.value = res.data.compositionList.map(obj => {
-            return {
-                value: obj.dosage,
-                name: obj.name
-            };
-          });
-          datachart()
-        })
-    } catch (error) {
+// onMounted(async () => {
+//     try {
+//         await getNutrition().then(res => {
+//           data1.value = res.data.compositionList.map(obj => {
+//             return {
+//                 value: obj.dosage,
+//                 name: obj.name
+//             };
+//           });
+//           datachart()
+//         })
+//     } catch (error) {
         
-    }
-    return {data1}
-  })
+//     }
+//     return {data1}
+//   })
 
 const input = ref('')
 const echarts = inject("echarts");
