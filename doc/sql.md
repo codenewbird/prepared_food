@@ -115,4 +115,6 @@ CREATE TABLE productionLot(
     FOREIGN KEY(lineId) REFERENCES productionLine(lineId),
     FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 ```

@@ -1,8 +1,10 @@
 <template>
-    <el-table :data="prodLines" style="width: 100%" @column-change="handleColumnChange">
-        <el-table-column prop="lineId" label="生产线编号" width="180" />
-        <el-table-column prop="name" label="生产线名称" width="180" />
-        <el-table-column prop="state" label="生产线状态" />
+    <el-table :data="foods" style="width: 100%" @column-change="handleColumnChange">
+        <el-table-column prop="identificationCode" label="shelfLife" width="180" />
+        <el-table-column prop="name" label="shelfLife" width="180" />
+        <el-table-column prop="shelfLife" label="shelfLife" />
+        <el-table-column prop="manufacturer" label="manufacturer" />
+        <el-table-column prop="description" label="description" />
         <el-table-column label="操作" width="300">
             <template #default="scope">
                 <div>
@@ -18,23 +20,25 @@
             </template>
         </el-table-column>
     </el-table>
-    <button @click="addFood">12</button>
 </template>
 <script setup>
 import {ref,onMounted} from 'vue';
 import {useRouter} from 'vue-router'
-import {getAllLine} from '@/api/prodLine.js'
+import {getAllFoods} from '@/api/food.js'
 
 let router = useRouter()
 
-const prodLines = ref([])
+const foods = ref([])
 
 
-let prodLine = {
-    "lineId":"1",
-    "state":"1", 
-    "name":"1",
-}
+let food = {
+        "identificationCode":"1",
+        "name":"八宝粥",
+        "shelfLife":1704419707699,
+        "manufacturer":"304",
+        "description":"不好喝",
+        "sqCode":"sq123"
+        }
 
 
 const handleEdit = (index,row) => {
@@ -42,20 +46,18 @@ const handleEdit = (index,row) => {
     router.push({name:"lotAdd",params:{'selectLine': row}})
 };
     
-let addFood = function getAllFoods(){
-    this.prodLines.push(prodLine)
-}
+
   
 onMounted(async ()=>{
     try{
-        getAllLine().then(res =>{
-            console.log(res)
-            prodLines.value = res.data
+        getAllFoods().then(res =>{
+
+            foods.value = res.data
         })
     }catch(error){
 
     }
-    return {prodLines}
+    return {foods}
 })
 
 </script>

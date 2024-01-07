@@ -1,9 +1,9 @@
 
 <template>
     <form id="myForm">  
-        <input type="text" placeholder="标识码" v-model="lot.identificationCode"> <br> 
+        <input type="text" placeholder="标识码" v-model="lot.identificationCode" @click="selectFood"> <br> 
         <input type="text" placeholder="生产批次号" v-model="lot.lot">   <br>
-        <input type="text" placeholder="生产线" v-model="lot.lineId" readonly> <br>  
+        <input type="text" placeholder="生产线" v-model="lot.lineId" @click="selectLine" readonly> <br>  
         <input type="text" placeholder="状态" v-model="lot.state">  <br>
         <input type="text" placeholder="生产数量" v-model="lot.num">  <br>             
     </form>  
@@ -15,10 +15,14 @@ import {useRouter} from "vue-router"
 import { ref,isRef } from 'vue'
 import { addlot } from '@/api/lot.js'
 
-router = useRouter()
+let router = useRouter()
 
 let selectLine = function select(){
     router.push({name:"lineSelect"})
+}
+
+let selectFood = function select2(){
+    router.push({name: "foodSelect"})
 }
 
 const lot = ref({

@@ -19,9 +19,4 @@ public class RawMaterial implements Serializable {
     private String identificationCode;
     private String detail;
 
-    class RMs{
-        String name;
-        float dosage;
-    }
-
 }

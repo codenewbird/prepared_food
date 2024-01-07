@@ -29,7 +29,7 @@
 </template>
 <script setup>
 import {ref,onMounted} from 'vue';
-import {getAllLine} from '@/api/prodLine.js'
+import {getAllLine} from '@/api/prodLine.js';
     
 
 const prodLines = ref([])
@@ -54,6 +54,7 @@ const handleEdit = (index,row) => {
 let addFood = function getAllFoods(){
     this.prodLines.push(prodLine)
 }
+
   
 onMounted(async ()=>{
     try{
@@ -64,6 +65,8 @@ onMounted(async ()=>{
     }catch(error){
 
     }
+    console.log(router.params.selectLine) 
+
     return {prodLines}
 })
 

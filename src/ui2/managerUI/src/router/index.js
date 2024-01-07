@@ -5,6 +5,7 @@ import LineAdd from '@/components/ProdLineAdd.vue'
 import LineManager from '@/components/ProdLineManager.vue'
 import LotAdd from '@/components/LotAdd.vue'
 import LineSelect from '@/components/LineSelect.vue'
+import FoodSelect from '@/components/FoodSelect.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -37,6 +38,11 @@ const router = createRouter({
       path: '/lineSelect',
       name: 'lineSelect',
       component: LineSelect
+    },
+    {
+      path: '/foodSelect',
+      name: 'foodSelect',
+      component: FoodSelect
     },
     // {
     //   path: '/about',
