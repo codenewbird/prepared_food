@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjx.dao.RawMaterialRuleDao">
+    <insert id="addItem" parameterType="com.zjx.entity.RawMaterialRule">
+        INSERT INTO rawMaterialRule VALUES(
+        #{identificationCode},
+        #{isCheckTem},
+        #{isCheckHum},
+        #{isCheckOxy},
+        #{maxTem},
+        #{minTem},
+        #{maxHum},
+        #{minHum},
+        #{maxOxy},
+        #{minOxy})
+    </insert>
+    <select id="queryItem" parameterType="String">
+        SELECT * FROM rawMaterialRule WHERE identificationCode=#{code}
+    </select>
+    <select id="getAllItems">
+        SELECT * FROM rawMaterialRule
+    </select>
+</mapper>

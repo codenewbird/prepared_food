@@ -42,28 +42,29 @@ use preparedFood2;
 CREATE TABLE baseInfo(
     identificationCode VARCHAR(50) PRIMARY KEY,
     name VARCHAR(50),
-    shelfLife DATE,
+    shelfLife INT,
     manufacturer VARCHAR(50),
-    description VARCHAR(128)
-);
+    description VARCHAR(128),
+    sqCode VARCHAR(50)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE ingredient(
     identificationCode VARCHAR(50),
     detail VARCHAR(255),
     FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE rawMaterial(
     identificationCode VARCHAR(50),
     detail VARCHAR(255),
     FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE nutrition(
     identificationCode VARCHAR(50),
     detail VARCHAR(255),
     FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE procedure2(
     identificationCode VARCHAR(50),
@@ -71,5 +72,49 @@ CREATE TABLE procedure2(
     description VARCHAR(255),
     monitorPointId VARCHAR(50),
     FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE rawMaterialRule(
+    identificationCode VARCHAR(50),
+    isCheckTem BOOLEAN,
+    isCheckHum BOOLEAN,
+    isCheckOxy BOOLEAN,
+    maxTem FLOAT,
+    minTem FLOAT,
+    maxHum FLOAT,
+    minHum FLOAT,
+    maxOxy FLOAT,
+    minOxy FLOAT,
+    FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE productionLine(
+    lineId VARCHAR(50) PRIMARY KEY,
+    state INT,
+    name VARCHAR(128)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE equipment(
+    lineId VARCHAR(50),
+    equipmentId VARCHAR(50),
+    name VARCHAR(20),
+    model VARCHAR(20),
+    feature VARCHAR(128),
+    manufacturer VARCHAR(64),
+    manufacturerDate DATE,
+    latestOverhaulDate DATE,
+    FOREIGN KEY(lineId) REFERENCES productionLine(lineId)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE productionLot(
+    identificationCode VARCHAR(50),
+    lot VARCHAR(50) PRIMARY KEY,
+    lineId VARCHAR(50),
+    state INT,
+    num INT,
+    FOREIGN KEY(lineId) REFERENCES productionLine(lineId),
+    FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 ```

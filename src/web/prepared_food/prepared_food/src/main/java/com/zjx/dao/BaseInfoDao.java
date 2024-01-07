@@ -13,6 +13,6 @@ import java.util.List;
 public interface BaseInfoDao extends BaseDao<BaseInfo>{
     @Override
     int addItem(BaseInfo item);
-
+    @Override
     List<BaseInfo> getAllItems();
 }
