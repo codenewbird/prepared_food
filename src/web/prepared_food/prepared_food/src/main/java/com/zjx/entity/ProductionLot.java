@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * @author 周锦兴
  */
@@ -12,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-public class ProductionLot {
+public class ProductionLot implements Serializable {
     private String identificationCode;
     private String lot;
     private String lineId;

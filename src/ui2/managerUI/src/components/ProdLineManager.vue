@@ -65,7 +65,7 @@ onMounted(async ()=>{
     }catch(error){
 
     }
-    console.log(router.params.selectLine) 
+    // console.log(router.params.selectLine) 
 
     return {prodLines}
 })

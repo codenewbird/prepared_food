@@ -7,6 +7,7 @@ import LotAdd from '@/components/LotAdd.vue'
 import LineSelect from '@/components/LineSelect.vue'
 import FoodSelect from '@/components/FoodSelect.vue'
 import CommentRuleSet from '@/components/CommentRuleSet.vue'
+import Login from '@/components/Login.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -50,6 +51,11 @@ const router = createRouter({
       name: 'commentRuleSet',
       component: CommentRuleSet
     },
+    {
+      path: '/',
+      name: 'login',
+      component: Login
+    }
     // {
     //   path: '/about',
     //   name: 'about',

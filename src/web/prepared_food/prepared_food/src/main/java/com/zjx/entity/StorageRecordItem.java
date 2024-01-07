@@ -4,12 +4,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Setter
 @Getter
 @NoArgsConstructor
-public class StorageRecordItem {
+public class StorageRecordItem implements Serializable {
     private String production_batches;
     private String storage_mode;
     private Date time;
