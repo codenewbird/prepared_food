@@ -1,7 +1,8 @@
 package com.zjx.controller;
 
-import com.zjx.config.Record;
+import com.zjx.entity.Comment;
 import com.zjx.entity.CommentRule;
+import com.zjx.service.CommentService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,16 +13,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("comment")
 public class CommentController {
     @Resource
-    Record record;
+    private CommentService commentService;
     @PostMapping("setRule")
     public int setRule(@RequestBody CommentRule rule){
-        record.add();
         return 1;
     }
 
-    @GetMapping("test")
-    public int test(){
-        record.add();
+    @PostMapping("add")
+    public int addComment(@RequestBody Comment comment){
+        commentService.addComment(comment);
         return 1;
     }
+
 }
