@@ -24,6 +24,9 @@
 import {ref,onMounted} from 'vue';
 import {useRouter} from 'vue-router'
 import {getAllLine} from '@/api/prodLine.js'
+import {useStore} from 'vuex'
+
+let store = useStore()
 
 let router = useRouter()
 
@@ -38,7 +41,7 @@ let prodLine = {
 
 
 const handleEdit = (index,row) => {
-    console.log(row)
+    store.dispatch("SELECT_LINE",row.lineId)
     router.push({name:"lotAdd",params:{'selectLine': row}})
 };
     

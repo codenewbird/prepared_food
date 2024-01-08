@@ -25,7 +25,9 @@
 import {ref,onMounted} from 'vue';
 import {useRouter} from 'vue-router'
 import {getAllFoods} from '@/api/food.js'
+import {useStore} from 'vuex'
 
+let store = useStore()
 let router = useRouter()
 
 const foods = ref([])
@@ -42,7 +44,7 @@ let food = {
 
 
 const handleEdit = (index,row) => {
-    console.log(row)
+    store.dispatch("SELECT_FOOD",row.identificationCode)
     router.push({name:"lotAdd",params:{'selectLine': row}})
 };
     

@@ -6,7 +6,7 @@ import mutations from '@/mutations'
 
 const store = createStore({
     modules:{
-        user,lot
+        lot,user
     },
     actions,
     mutations

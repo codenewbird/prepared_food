@@ -29,12 +29,12 @@ const lot = ref({
 })
 
 let selectLine = function select(){
-    store.dispatch("BEFORE",lot)
+    store.dispatch("BEFORE",lot.value)
     router.push({name:"lineSelect"})
 }
 
 let selectFood = function select2(){
-    store.dispatch("BEFORE",lot)
+    store.dispatch("BEFORE",lot.value)
     router.push({name: "foodSelect"})
 }
 
@@ -47,8 +47,13 @@ let add = function add(){
 }
 
 onMounted(()=>{
-    store.dispatch("RECOVERY_LOT");
-    console.log(store.state.lot)
+    // store.dispatch("RECOVERY_LOT").then(res=>{
+    //     console.log(res.lot)
+    //     if(res.lot){
+    //         lot.value = res.lot 
+    //     }
+    // });
+    lot.value = store.state.lot
 })
 
 

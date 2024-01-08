@@ -47,6 +47,19 @@ const lot = {
                 commit("SAVE_STATE",lot.state)
                 commit("SAVE_NUM",lot.num);
             }
+            return { lot }
+        },
+        SELECT_FOOD({commit},identificationCode){
+            commit("SAVE_IDENTIFICATIONCODE",identificationCode)
+            let lot = storage.getSessionObject('lot');
+            lot.identificationCode = identificationCode
+            storage.saveSessionObject("lot",lot)
+        },
+        SELECT_LINE({commit},lineId){
+            commit("SAVE_LINEID",lineId)
+            let lot = storage.getSessionObject('lot');
+            lot.lineId = lineId
+            storage.saveSessionObject("lot",lot)
         }
     }
 }
