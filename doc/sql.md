@@ -116,5 +116,14 @@ CREATE TABLE productionLot(
     FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+CREATE TABLE comment(
+    identificationCode VARCHAR(50),
+    userId bigint(20),
+    userComment VARCHAR(255),
+    score INT,
+    state INT,
+    time DATETIME,
+    FOREIGN KEY(userId) REFERENCES user(user_id),
+    FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```

@@ -6,5 +6,5 @@ package com.zjx.entity;
 public class CommentRule {
     private int hourMax;
     private int dayMax;
-    private int monthMax;
+    private int weekMax;
 }

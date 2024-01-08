@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjx.dao.CommentDao">
+    <insert id="addItem" parameterType="com.zjx.entity.Comment">
+        INSERT INTO comment VALUES(
+        #{identificationCode},
+        #{userId},
+        #{userComment},
+        #{score},
+        #{state},
+        #{time})
+    </insert>
+    <select id="queryItem" parameterType="String">
+        SELECT * FROM comment WHERE identificationCode=#{code}
+    </select>
+    <select id="queryItemInHour" parameterType="String">
+        SELECT SUM(*) FROM comment WHERE identificationCode=#{code} and time >= NOW() - INTERVAL 1 HOUR;
+    </select>
+    <select id="queryItemInDay" parameterType="String">
+        SELECT SUM(*) FROM comment WHERE identificationCode=#{code} and time >= CURDATE() - INTERVAL 1 DAY;
+    </select>
+    <select id="queryItemInWeek" parameterType="String">
+        SELECT SUM(*) FROM comment WHERE identificationCode=#{code} and time >= CURDATE() - INTERVAL 7 DAY;
+    </select>
+<!--    SELECT * FROM comment WHERE time >= NOW() - INTERVAL 1 HOUR; -->
+
+</mapper>

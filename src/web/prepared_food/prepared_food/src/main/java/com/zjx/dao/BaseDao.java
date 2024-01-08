@@ -11,4 +11,6 @@ public interface BaseDao<T> {
     int deleteItem(T item);
     List<T> getAllItems(String key);
     List<T> getAllItems();
+
+    List<T> queryItem(String key);
 }
