@@ -1,4 +1,4 @@
-package com.zjx.entity;
+package com.zjx.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,12 +16,8 @@ import java.sql.Timestamp;
 @Setter
 @Getter
 public class StoreTranRecord implements Serializable {
+
     private String lot;
     private Timestamp recordTime;
-    private float temperature;
-    private float humidity;
-    private float oxygenContent;
-    private int state;
-    private int warehouseId;
-    private int carId;
+    private String hash;
 }

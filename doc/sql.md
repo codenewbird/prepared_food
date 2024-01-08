@@ -6,8 +6,9 @@ use preparedFood;
 
 
 CREATE TABLE storageRecord(
-    batch VARCHAR(128),
-    hashkey VARCHAR(255)
+    lot VARCHAR(128),
+    hashkey VARCHAR(255),
+    
 );
 
 CREATE TABLE productRecord(
@@ -126,4 +127,10 @@ CREATE TABLE comment(
     FOREIGN KEY(userId) REFERENCES user(user_id),
     FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE storeTranRecord(
+    lot VARCHAR(50) PRIMARY KEY,
+    recordTime DATETIME,
+    hash varchar(50)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 ```

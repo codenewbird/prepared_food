@@ -21,7 +21,7 @@ import java.util.TimerTask;
  */
 
 @Component
-@EnableScheduling
+//@EnableScheduling
 public class CheckTask {
     public CheckTask(){
         System.out.println("初始化Check");
