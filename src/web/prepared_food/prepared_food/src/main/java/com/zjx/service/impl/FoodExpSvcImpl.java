@@ -6,9 +6,11 @@ import com.zjx.entity.FoodException;
 import com.zjx.pojo.FoodExceptionHash;
 import com.zjx.service.FoodExceptionService;
 import jakarta.annotation.Resource;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class FoodExpSvcImpl implements FoodExceptionService {
     @Resource
     private BlockChainDAO blockChainDAO;
