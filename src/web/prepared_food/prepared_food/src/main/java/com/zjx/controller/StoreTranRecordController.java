@@ -16,6 +16,6 @@ public class StoreTranRecordController {
 
     @RequestMapping("getStoreTranRecord")
     public String getStoreTranRecordByHash() throws UnsupportedEncodingException, JsonProcessingException {
-
+        return "";
     }
 }

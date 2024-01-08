@@ -3,7 +3,9 @@
 <mapper namespace="com.zjx.dao.StoreTranRecordDao">
     <insert id="addItem" parameterType="StoreTranRecord">
         INSERT INTO storeTranRecord VALUES(
-
+        #{lot},
+        #{recordTime},
+        #{hash})
     </insert>
 
     <select id="getHash" parameterType="String">
