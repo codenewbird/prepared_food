@@ -11,4 +11,8 @@
     <select id="getHash" parameterType="String">
         SELECT * FROM storageRecord WHERE lot = #{lot}
     </select>
+
+    <select id="getAllItems" parameterType="com.zjx.pojo.StoreTranRecord">
+        SELECT * FROM storeTranRecord
+    </select>
 </mapper>

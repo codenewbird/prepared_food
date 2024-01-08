@@ -9,6 +9,7 @@ public interface StoreTranRecordDao extends BaseDao<StoreTranRecord>{
     @Override
     int addItem(StoreTranRecord item);
 
-    List<StoreTranRecord> getHash(String hash);
+    List<StoreTranRecord> getAllItems();
 
+    int getHash(String lot);
 }
