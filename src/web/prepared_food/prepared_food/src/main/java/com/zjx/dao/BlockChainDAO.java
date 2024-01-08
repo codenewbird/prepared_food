@@ -20,6 +20,7 @@ import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
@@ -44,11 +45,18 @@ public class BlockChainDAO {
         return node.get("Data").asInt();
     }
 
-    public String store(){
+    public String store(Object object){
         String url = BlockChainAPI.CREATE_TRANSACTION;
-        String text = "{\"Data\": \""+"123"+"\"}";
-        System.out.println(query(text,url));
-        return "";
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            String json = objectMapper.writeValueAsString(object);
+            String data = Arrays.toString(bencoder.encode(json.getBytes()));
+            String text = "{\"Data\": \""+data+"\"}";
+            JsonNode jsonNode = objectMapper.readTree(query(text,url));
+            return jsonNode.get("Data").get("Figure").toString();
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public String getFoodException(){

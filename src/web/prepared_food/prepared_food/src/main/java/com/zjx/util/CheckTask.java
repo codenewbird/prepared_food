@@ -1,11 +1,11 @@
 package com.zjx.util;
 
-import com.zjx.dao.BaseDao;
-import com.zjx.dao.BaseInfoDao;
-import com.zjx.dao.CommentDao;
-import com.zjx.dao.FoodExceptionDao;
+import com.zjx.controller.BLKCController;
+import com.zjx.dao.*;
 import com.zjx.entity.BaseInfo;
 import com.zjx.entity.Comment;
+import com.zjx.entity.FoodException;
+import com.zjx.service.FoodExceptionService;
 import com.zjx.websocket.WebSocket;
 import jakarta.annotation.Resource;
 import lombok.AllArgsConstructor;
@@ -14,6 +14,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.TimerTask;
 
@@ -43,7 +45,7 @@ public class CheckTask {
     @Resource
     private BaseInfoDao baseInfoDao;
     @Resource
-    private FoodExceptionDao foodExceptionDao;
+    private FoodExceptionService foodExceptionService;
 
     @Scheduled(fixedDelay = 5000)
     public void checkHour(){
@@ -79,6 +81,8 @@ public class CheckTask {
             }
             if(count >= max){
                 socket.sendAllMessage("异常");
+                FoodException exception = new FoodException(item.getIdentificationCode(),4,null,item.getName(), item.getName()+"的评价过差",new Timestamp(new Date().getTime()));
+                foodExceptionService.add(exception);
             }
         }
     }
