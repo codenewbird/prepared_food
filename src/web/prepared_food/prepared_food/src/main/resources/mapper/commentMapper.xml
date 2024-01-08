@@ -14,13 +14,13 @@
         SELECT * FROM comment WHERE identificationCode=#{code}
     </select>
     <select id="queryItemInHour" parameterType="String">
-        SELECT SUM(*) FROM comment WHERE identificationCode=#{code} and time >= NOW() - INTERVAL 1 HOUR;
+        SELECT SUM(identificationCode) FROM comment WHERE identificationCode=#{code} AND time >= NOW() - INTERVAL 1 HOUR;
     </select>
     <select id="queryItemInDay" parameterType="String">
-        SELECT SUM(*) FROM comment WHERE identificationCode=#{code} and time >= CURDATE() - INTERVAL 1 DAY;
+        SELECT SUM(identificationCode) FROM comment WHERE identificationCode=#{code} and time >= CURDATE() - INTERVAL 1 DAY;
     </select>
     <select id="queryItemInWeek" parameterType="String">
-        SELECT SUM(*) FROM comment WHERE identificationCode=#{code} and time >= CURDATE() - INTERVAL 7 DAY;
+        SELECT SUM(identificationCode) FROM comment WHERE identificationCode=#{code} and time >= CURDATE() - INTERVAL 7 DAY;
     </select>
 <!--    SELECT * FROM comment WHERE time >= NOW() - INTERVAL 1 HOUR; -->
 
