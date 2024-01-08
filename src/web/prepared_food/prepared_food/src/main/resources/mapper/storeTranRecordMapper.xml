@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zjx.dao.StoreTranRecordDao">
-    <insert id="addItem" parameterType="StoreTranRecord">
+    <insert id="addItem" parameterType="com.zjx.pojo.StoreTranRecord">
         INSERT INTO storeTranRecord VALUES(
         #{lot},
         #{recordTime},
@@ -10,5 +10,9 @@
 
     <select id="getHash" parameterType="String">
         SELECT * FROM storageRecord WHERE lot = #{lot}
+    </select>
+
+    <select id="getAllItems" parameterType="com.zjx.pojo.StoreTranRecord">
+        SELECT * FROM storeTranRecord
     </select>
 </mapper>

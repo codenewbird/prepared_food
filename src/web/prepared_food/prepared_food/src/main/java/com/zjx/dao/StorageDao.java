@@ -8,5 +8,5 @@ import java.util.List;
 
 @Mapper
 public interface StorageDao {
-    List<StorageRecord> getHash(String hash);
+    List<StorageRecord> getHash(String batch);
 }
