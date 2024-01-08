@@ -16,4 +16,10 @@ public class BLKCController {
         Integer blkcHeight = dao.getBLKCHeight();
         return blkcHeight;
     }
+
+    @RequestMapping("storetest")
+    public Integer store() throws JsonProcessingException {
+        dao.store();
+        return null;
+    }
 }

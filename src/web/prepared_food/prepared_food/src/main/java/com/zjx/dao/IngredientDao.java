@@ -12,5 +12,4 @@ public interface IngredientDao extends BaseDao<Ingredient>{
     @Override
     int addItem(Ingredient item);
 
-
 }

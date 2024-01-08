@@ -7,8 +7,13 @@ import com.zjx.constant.BlockChainAPI;
 import com.zjx.entity.StorageRecordItem;
 import com.zjx.pojo.StorageRecord;
 import jakarta.annotation.Resource;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.*;
@@ -28,6 +33,8 @@ public class BlockChainDAO {
     private ProductDao productDao;
     @Resource
     private StorageDao storageDao;
+    @Resource
+    private FoodExceptionDao foodExceptionDao;
     public Integer getBLKCHeight() throws JsonProcessingException {
         String url = BlockChainAPI.GET_BLOCK_CHAIN_HEIGHT;
         ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
@@ -35,6 +42,17 @@ public class BlockChainDAO {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = mapper.readTree(responseEntity.getBody());
         return node.get("Data").asInt();
+    }
+
+    public String store(){
+        String url = BlockChainAPI.CREATE_TRANSACTION;
+        String text = "{\"Data\": \""+"123"+"\"}";
+        System.out.println(query(text,url));
+        return "";
+    }
+
+    public String getFoodException(){
+        return "";
     }
 
     public String getProductionLineInfoByHash() throws UnsupportedEncodingException, JsonProcessingException {
@@ -126,4 +144,46 @@ public class BlockChainDAO {
         //IOException上面就不会报错了
     }
 
+    String query(String text,String u) {
+        try {
+            URL url = new URL(u);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("Connection", "Keep-Alive");
+            con.setRequestProperty("Charset", "UTF-8");
+            con.setRequestProperty("accept", "*/*");
+            con.setRequestProperty("Authorization", "Bearer 4505e0c1-e1ea-4be3-92be-02bf5cc9d45b");
+
+            con.setConnectTimeout(5000);
+            con.setDoInput(true);
+            con.setDoOutput(true);
+
+            String payload = text;
+
+            try (OutputStream outputStream = con.getOutputStream()) {
+                byte[] input = payload.getBytes("utf-8");
+                outputStream.write(input, 0, input.length);
+            }
+
+            try (InputStream inputStream = con.getInputStream();
+                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "utf-8");
+                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
+
+                String line;
+                StringBuilder result = new StringBuilder();
+                while ((line = bufferedReader.readLine()) != null) {
+                    result.append(line);
+                }
+
+                return result.toString();
+            }
+        } catch (SocketTimeoutException e) {
+            e.printStackTrace();
+            return "";
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
 }
