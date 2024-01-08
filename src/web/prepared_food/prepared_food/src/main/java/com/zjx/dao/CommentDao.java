@@ -15,7 +15,7 @@ public interface CommentDao extends BaseDao<Comment>{
 
     @Override
     List<Comment> queryItem(String key);
-    int queryItemInHour(String key);
-    int queryItemInDay(String key);
-    int queryItemInWeek(String key);
+    Integer queryItemInHour(String key);
+    Integer queryItemInDay(String key);
+    Integer queryItemInWeek(String key);
 }
