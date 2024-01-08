@@ -4,27 +4,26 @@
         <div class="productInfo" style="border: 1px solid grey; margin: 10px; clear: both; background-color: #eeeeee20">
           <div style="width:50%; display:inline-block;">
             <ul type="none">
-              <li>产品名称:</li>
-              <li>产品批次:</li>
-              <li>产品生产日期:</li>
-              <li>产品保质期:</li>
-              <li>产品来源:</li>
-              <li>产品描述:</li>
+              <li>产品名称:{{baseInfo.name}}</li>
+              <li>产品保质期:{{baseInfo.shelfLife}}天</li>
+              <li>产品来源:{{baseInfo.manufacturer}}</li>
+              <li>产品描述:{{baseInfo.description}}</li>
             </ul>
           </div>
-          <div style=" width:50%; display:inline-block;">
+          <!-- <div style=" width:50%; display:inline-block;">
             <ul type="none">
               <li  v-for="(value, key) in baseInfo" :key="key">{{value}}</li>
             </ul>
-          </div>
+          </div> -->
         </div>
         <h3>产品评论</h3>
         <div class="productInfo" style="border: 1px solid grey; margin: 50px auto; clear: both; background-color: #eeeeee20">
           <div style="padding: 20px" v-for="(comment,index) in comments" key="index">
-            <p></p>
+            <p>{{comment.nickname}}</p>
+            <p>{{comment.time}}</p>
+            <p>{{comment.userComment}}</p>
           </div>
           <el-input
-              v-model="textarea"
               :rows="2"
               placeholder="点评一下"
               style="float: left; width: 430px"
@@ -37,16 +36,26 @@
 
 <script setup>
 import { ref,onMounted } from 'vue'
-import { getBaseInfo } from '@/api/product.js'
+import { getComments } from '@/api/comment.js'
+import { getInfo } from '@/api/foodInfo.js' 
 
-let baseInfo = ref()
+let baseInfo = ref({
+  "identificationCode":"",
+  "name":"",
+  "shelfLife":"",
+  "manufacturer":"",
+  "description":""
+})
 
 let comments = ref([])
 
 const comment = {
-  userId: "",
-  nickName: "",
-  content: ""
+  "identificationCode":"",
+  "userId": "",
+  "nickname": "",
+  "userComment": "",
+  "score":"",
+  "time":""
 }
 
 // onMounted(async () => {
@@ -62,6 +71,20 @@ const comment = {
 //     }
 //     return {baseInfo}
 //   })
+
+onMounted(()=>{
+  getComments(1).then(res=>{
+    comments.value = res.data
+  })
+  return {comments}
+})
+
+onMounted(()=>{
+  getInfo(1).then(res=>{
+    baseInfo.value = res.data
+  })
+  return {baseInfo}
+})
 
 </script>
 

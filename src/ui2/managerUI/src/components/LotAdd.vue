@@ -8,22 +8,17 @@
         <input type="text" placeholder="生产数量" v-model="lot.num">  <br>             
     </form>  
     <button @click="test1()">提交</button>  
+    <p>lot:{{$store.state.lot.lot}} </p>
 </template>
  
 <script setup>
 import {useRouter} from "vue-router"
-import { ref,isRef } from 'vue'
+import { ref,isRef,onMounted } from 'vue'
 import { addlot } from '@/api/lot.js'
+import { useStore } from 'vuex'
 
+let store = useStore()
 let router = useRouter()
-
-let selectLine = function select(){
-    router.push({name:"lineSelect"})
-}
-
-let selectFood = function select2(){
-    router.push({name: "foodSelect"})
-}
 
 const lot = ref({
     "identificationCode":"1",
@@ -33,11 +28,29 @@ const lot = ref({
     "num":""
 })
 
+let selectLine = function select(){
+    store.dispatch("BEFORE",lot)
+    router.push({name:"lineSelect"})
+}
+
+let selectFood = function select2(){
+    store.dispatch("BEFORE",lot)
+    router.push({name: "foodSelect"})
+}
+
+
+
 let add = function add(){
     addlot.then(res=>{
         console.log(res)
     })
 }
+
+onMounted(()=>{
+    store.dispatch("RECOVERY_LOT");
+    console.log(store.state.lot)
+})
+
 
 </script>
 

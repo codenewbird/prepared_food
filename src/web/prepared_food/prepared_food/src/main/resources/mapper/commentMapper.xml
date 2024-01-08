@@ -10,8 +10,15 @@
         #{state},
         #{time})
     </insert>
-    <select id="queryItem" parameterType="String">
-        SELECT * FROM comment WHERE identificationCode=#{code}
+    <select id="queryList" parameterType="String" resultType="com.zjx.entity.comment.CommentEntity">
+        SELECT identificationCode,
+        comment.userId,
+        nickname,
+        userComment,
+        score,
+        time
+        FROM comment,user
+        WHERE identificationCode=#{code} AND comment.userId = user.user_id
     </select>
     <select id="queryItemInHour" parameterType="String">
         SELECT SUM(identificationCode) FROM comment WHERE identificationCode=#{code} AND time >= NOW() - INTERVAL 1 HOUR;

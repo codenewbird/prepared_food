@@ -12,4 +12,6 @@ public interface FoodInfoService {
     int addFood(FoodInfo foodInfo);
 
     List<BaseInfo> getAllFoods();
+
+    BaseInfo getFoodInfo(String key);
 }

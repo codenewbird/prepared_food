@@ -12,5 +12,5 @@ public interface BaseDao<T> {
     List<T> getAllItems(String key);
     List<T> getAllItems();
 
-    List<T> queryItem(String key);
+    T queryItem(String key);
 }

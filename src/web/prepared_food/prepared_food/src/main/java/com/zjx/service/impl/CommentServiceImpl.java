@@ -2,10 +2,13 @@ package com.zjx.service.impl;
 
 import com.zjx.dao.CommentDao;
 import com.zjx.entity.Comment;
+import com.zjx.entity.comment.CommentEntity;
 import com.zjx.service.CommentService;
 import com.zjx.util.CommentClassifyInterface;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -16,6 +19,11 @@ public class CommentServiceImpl implements CommentService {
         comment.setState(queryType(comment));
         commentDao.addItem(comment);
         return 0;
+    }
+
+    @Override
+    public List<CommentEntity> getComment(String identificationCode) {
+        return commentDao.queryList(identificationCode);
     }
 
     int queryType(Comment comment) {

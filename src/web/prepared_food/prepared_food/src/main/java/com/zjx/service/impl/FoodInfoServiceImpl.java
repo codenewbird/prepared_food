@@ -42,4 +42,9 @@ public class FoodInfoServiceImpl implements FoodInfoService {
     public List<BaseInfo> getAllFoods() {
         return baseInfoDao.getAllItems();
     }
+
+    @Override
+    public BaseInfo getFoodInfo(String key) {
+        return baseInfoDao.queryItem(key);
+    }
 }

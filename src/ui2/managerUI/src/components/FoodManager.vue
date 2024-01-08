@@ -28,11 +28,14 @@
     </el-table-column>
 </el-table>
 <button @click="addFood">12</button>
+{{ $store.state.user.username }}
 </template>
 <script setup>
 import {ref,onMounted} from 'vue';
 import {getAllFoods} from '@/api/food.js'
+import {useStore} from 'vuex'
 
+let store = useStore();
 
 const handleDelete = (index,row) => {
     console.log(index)

@@ -15,4 +15,6 @@ public interface BaseInfoDao extends BaseDao<BaseInfo>{
     int addItem(BaseInfo item);
     @Override
     List<BaseInfo> getAllItems();
+    @Override
+    BaseInfo queryItem(String key);
 }

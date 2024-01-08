@@ -36,4 +36,10 @@ public class FoodInfoController {
         return ResponseEntity.ok().body(infos);
     }
 
+    @RequestMapping("{identificationCode}")
+    public ResponseEntity<BaseInfo> getFoodInfo(@PathVariable("identificationCode") String id){
+        BaseInfo baseInfo = foodInfoService.getFoodInfo(id);
+        return ResponseEntity.ok().body(baseInfo);
+    }
+
 }
