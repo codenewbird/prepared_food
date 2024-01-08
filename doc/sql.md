@@ -126,4 +126,14 @@ CREATE TABLE comment(
     FOREIGN KEY(userId) REFERENCES user(user_id),
     FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE foodException(
+    identificationCode VARCHAR(50),
+    lot VARCHAR(50),
+    type INT,
+    hash VARCHAR(255),
+    recordTime DATETIME,
+    FOREIGN KEY(lot) REFERENCES productionLot(lot),
+    FOREIGN KEY(identificationCode) REFERENCES baseInfo(identificationCode)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```

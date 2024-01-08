@@ -3,6 +3,7 @@ package com.zjx.util;
 import com.zjx.dao.BaseDao;
 import com.zjx.dao.BaseInfoDao;
 import com.zjx.dao.CommentDao;
+import com.zjx.dao.FoodExceptionDao;
 import com.zjx.entity.BaseInfo;
 import com.zjx.entity.Comment;
 import com.zjx.websocket.WebSocket;
@@ -21,7 +22,7 @@ import java.util.TimerTask;
  */
 
 @Component
-@EnableScheduling
+//@EnableScheduling
 public class CheckTask {
     public CheckTask(){
         System.out.println("初始化Check");
@@ -41,6 +42,8 @@ public class CheckTask {
     private CommentDao commentDao;
     @Resource
     private BaseInfoDao baseInfoDao;
+    @Resource
+    private FoodExceptionDao foodExceptionDao;
 
     @Scheduled(fixedDelay = 5000)
     public void checkHour(){
